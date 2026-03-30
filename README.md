@@ -1,6 +1,6 @@
-                                    # MARKET ADS MANAGER
+# MARKET ADS MANAGER
 
-                              ## LIVRABLES :
+                                     ## LIVRABLES :
 
 - Liste des fonctionnalités
 - Arborescence du projet
@@ -8,7 +8,7 @@
 - liste des routes
 
 
-## ARCHITECTURE TECHNIQUE
+                              ## ARCHITECTURE TECHNIQUE
 
 ### Backend :
 - Node.js + Express
@@ -19,7 +19,8 @@
 
 ### Frontend :
 
-
+- HTML, CSS, JS
+- Nunjucks ( équivalent EJS )
 
                               ## LISTES DES FONCTIONNALITES :
 
@@ -54,7 +55,7 @@
 
                            ## ARBORESCENCE / WIREFRAMES (pages)
 
- - voir dossier images dans /public/images/
+ - voir dossier images " /public/images/ "
 
  LIENS : 
 FIGMA = [text](https://www.figma.com/design/Axsfwi8eWDzdLisempRRQj/Market-Ads-Manager?node-id=0-1&t=p0WP2MOBMEm2hlye-1)
