@@ -1,0 +1,69 @@
+# ============================
+# Node.js
+# ============================
+
+# Dépendances
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Process files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+*.lcov
+
+# Environnements
+.env
+.env.local
+.env.*.local
+
+# Build / cache
+dist/
+build/
+.cache/
+.tmp/
+temp/
+
+# TypeScript (si utilisé)
+*.tsbuildinfo
+
+# ============================
+# MySQL
+# ============================
+
+# Dumps SQL
+*.sql
+*.sql.gz
+*.dump
+
+# Fichiers de config sensibles
+mysql.cnf
+*.cnf
+
+# ============================
+# Nunjucks
+# ============================
+
+# Cache Nunjucks (si activé)
+nunjucks-cache/
+*.njk-cache
+
+# ============================
+# OS / Éditeurs
+# ============================
+
+# macOS
+.DS_Store
+
+# Windows
