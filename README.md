@@ -1,87 +1,91 @@
 # MARKET ADS MANAGER
 
-                                     ## LIVRABLES :
+## LIVRABLES
 
 - Liste des fonctionnalités
 - Arborescence du projet
 - wireframes simples
 - liste des routes
 
+## ARCHITECTURE TECHNIQUE
 
-                              ## ARCHITECTURE TECHNIQUE
+### Backend
 
-### Backend :
 - Node.js + Express
 - MySQL ( local WAMP )
 - Authentification JWT
 - Upload d'images : Multer
 - Sécurité : Helmet, bcrypt
 
-### Frontend :
+### Frontend
 
 - HTML, CSS, JS
 - Nunjucks ( équivalent EJS )
 
-                              ## LISTES DES FONCTIONNALITES :
+## LISTES DES FONCTIONNALITES & ROUTES
 
-### un utilisateur doit pouvoir :
+### Le visiteur (public) doit pouvoir
 
-- créer un compte
-- se connecter
-- modifier leur profil
-- supprimer leur compte
+Route accessible sans connexion
 
-### un utilisateur connecté doit pouvoir :
+- Liste des annonces --------------------------------- GET /ads/
+- Détail d’une annonce ------------------------------- GET /ads/:id
+- Contacter vendeur ---------------------------------- POST /ads/:id/contact
 
-- Publier une annonce
-- Modifier une annonce
-- Supprimer une annonce
-- Consulter ses annonces
-- contacter le vendeur d’une annonce
+- Recherche par mot-clé ------------------------------ GET /ads?search=mot
+- Filtre par catégorie ------------------------------- GET /ads?category=cat
+- Filtre par prix (min/max) -------------------------- GET /ads?min=0&max=100
+- Filtre par localisation ---------------------------- GET /ads?location=ville
 
-### Un visiteur peut aller sur :
+### un utilisateur connecté doit pouvoir
 
-- Liste des annonces
-- Détail d’une annonce
-- Donner une réponse par mail
+Route accessible après inscription et connexion
 
-### Le visiteur doit pouvoir chercher une annonce par :
+- créer un compte ------------------------------------ POST /auth/register
+- se connecter --------------------------------------- POST /auth/login
 
-- Recherche par mot-clé
-- Filtre par catégorie
-- Filtre par prix (min/max)
-- Filtre par localisation
+- Consulter son profil ------------------------------- GET /user/profile
+- modifier leur profil ------------------------------- PUT /user/profile
+- supprimer leur compte ------------------------------ DELETE /user/profile
 
+- Consulter ses annonces ----------------------------- GET /user/ads
+- Publier une annonce -------------------------------- POST /user/ads
+- Modifier une annonce ------------------------------- PUT /user/ads/:id
+- Supprimer une annonce ------------------------------ DELETE /user/ads/:id
+- contacter le vendeur d’une annonce ----------------- POST /ads/:id/contact
 
-                           ## ARBORESCENCE / WIREFRAMES (pages)
+## ARBORESCENCE / WIREFRAMES (pages)
 
- - voir dossier images " /public/images/ "
+- voir dossier images " /public/images/ "
 
- LIENS : 
+LIENS :
 FIGMA = [text](https://www.figma.com/design/Axsfwi8eWDzdLisempRRQj/Market-Ads-Manager?node-id=0-1&t=p0WP2MOBMEm2hlye-1)
 
-## STRUCTURE :
+## STRUCTURE
 
-# MARKET_ADS_MANAGER
-
-* [public/](.\MARKET_ADS_MANAGER\public)
-  * [css/](.\MARKET_ADS_MANAGER\public\css)
-  * [documents/](.\MARKET_ADS_MANAGER\public\documents)
-  * [images/](.\MARKET_ADS_MANAGER\public\images)
-  * [js/](.\MARKET_ADS_MANAGER\public\js)
-* [server.js/](.\MARKET_ADS_MANAGER\server.js)
-* [src/](.\MARKET_ADS_MANAGER\src)
-  * [config/](.\MARKET_ADS_MANAGER\src\config)
-  * [controllers/](.\MARKET_ADS_MANAGER\src\controllers)
-  * [middlewares/](.\MARKET_ADS_MANAGER\src\middlewares)
-  * [models/](.\MARKET_ADS_MANAGER\src\models)
-  * [routes/](.\MARKET_ADS_MANAGER\src\routes)
-* [views/](.\MARKET_ADS_MANAGER\views)
-  * [ads/](.\MARKET_ADS_MANAGER\views\ads)
-  * [categories/](.\MARKET_ADS_MANAGER\views\categories)
-  * [layouts/](.\MARKET_ADS_MANAGER\views\layouts)
-  * [partials/](.\MARKET_ADS_MANAGER\views\partials)
-  * [users/](.\MARKET_ADS_MANAGER\views\users)
-* [.env](.\MARKET_ADS_MANAGER\.env)
-* [.gitignore](.\MARKET_ADS_MANAGER\.gitignore)
-* [README.md](.\MARKET_ADS_MANAGER\README.md)
+MARKET_ADS_MANAGER/
+┣ public/
+┃ ┣ css/
+┃ ┣ documents/
+┃ ┣ images/
+┃ ┃ ┣ arborescence.png
+┃ ┃ ┣ indexe.png
+┃ ┃ ┗ wireframes_page.png
+┃ ┗ js/
+┣ server.js/
+┣ src/
+┃ ┣ config/
+┃ ┃ ┗ db.js
+┃ ┣ controllers/
+┃ ┣ middlewares/
+┃ ┣ models/
+┃ ┗ routes/
+┣ views/
+┃ ┣ ads/
+┃ ┣ categories/
+┃ ┣ layouts/
+┃ ┣ partials/
+┃ ┗ users/
+┣ .env
+┣ .gitignore
+┗ README.md
