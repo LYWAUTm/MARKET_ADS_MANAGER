@@ -72,20 +72,45 @@ MARKET_ADS_MANAGER/
 ┃ ┃ ┣ indexe.png
 ┃ ┃ ┗ wireframes_page.png
 ┃ ┗ js/
-┣ server.js/
 ┣ src/
 ┃ ┣ config/
 ┃ ┃ ┗ db.js
 ┃ ┣ controllers/
+┃ ┃ ┣ adsController.js
+┃ ┃ ┣ authController.js
+┃ ┃ ┗ userController.js
 ┃ ┣ middlewares/
+┃ ┃ ┣ adsMiddleware.js
+┃ ┃ ┣ authmiddleware.js
+┃ ┃ ┗ userMiddleware.js
 ┃ ┣ models/
-┃ ┗ routes/
+┃ ┃ ┣ adsModel.js
+┃ ┃ ┣ authModel.js
+┃ ┃ ┗ userModel.js
+┃ ┣ routes/
+┃ ┃ ┣ adsRoute.js
+┃ ┃ ┣ authRoute.js
+┃ ┃ ┗ userRoute.js
+┃ ┗ server.js
 ┣ views/
 ┃ ┣ ads/
-┃ ┣ categories/
+┃ ┃ ┣ adsDashboard.njk
+┃ ┃ ┣ detailAds.njk
+┃ ┃ ┣ editAds.njk
+┃ ┃ ┗ listAds.njk
+┃ ┣ contacts/
+┃ ┃ ┣ contactAds.njk
+┃ ┃ ┗ contactUser.njk
 ┃ ┣ layouts/
+┃ ┃ ┗ base.njk
 ┃ ┣ partials/
+┃ ┃ ┣ footer.njk
+┃ ┃ ┗ header.njk
 ┃ ┗ users/
+┃   ┣ editProfil.njk
+┃   ┣ login.njk
+┃   ┣ register.njk
+┃   ┗ userDashboard.njk
 ┣ .env
 ┣ .gitignore
 ┗ README.md
