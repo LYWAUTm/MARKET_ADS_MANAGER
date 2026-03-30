@@ -60,4 +60,28 @@
  LIENS : 
 FIGMA = [text](https://www.figma.com/design/Axsfwi8eWDzdLisempRRQj/Market-Ads-Manager?node-id=0-1&t=p0WP2MOBMEm2hlye-1)
 
-STRUCTURE :
+## STRUCTURE :
+
+# MARKET_ADS_MANAGER
+
+* [public/](.\MARKET_ADS_MANAGER\public)
+  * [css/](.\MARKET_ADS_MANAGER\public\css)
+  * [documents/](.\MARKET_ADS_MANAGER\public\documents)
+  * [images/](.\MARKET_ADS_MANAGER\public\images)
+  * [js/](.\MARKET_ADS_MANAGER\public\js)
+* [server.js/](.\MARKET_ADS_MANAGER\server.js)
+* [src/](.\MARKET_ADS_MANAGER\src)
+  * [config/](.\MARKET_ADS_MANAGER\src\config)
+  * [controllers/](.\MARKET_ADS_MANAGER\src\controllers)
+  * [middlewares/](.\MARKET_ADS_MANAGER\src\middlewares)
+  * [models/](.\MARKET_ADS_MANAGER\src\models)
+  * [routes/](.\MARKET_ADS_MANAGER\src\routes)
+* [views/](.\MARKET_ADS_MANAGER\views)
+  * [ads/](.\MARKET_ADS_MANAGER\views\ads)
+  * [categories/](.\MARKET_ADS_MANAGER\views\categories)
+  * [layouts/](.\MARKET_ADS_MANAGER\views\layouts)
+  * [partials/](.\MARKET_ADS_MANAGER\views\partials)
+  * [users/](.\MARKET_ADS_MANAGER\views\users)
+* [.env](.\MARKET_ADS_MANAGER\.env)
+* [.gitignore](.\MARKET_ADS_MANAGER\.gitignore)
+* [README.md](.\MARKET_ADS_MANAGER\README.md)
