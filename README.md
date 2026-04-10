@@ -73,3 +73,8 @@ tables, clés primaires, clés étrangères, types SQL, contraintes et index.
 - MySQl : [https://dev.mysql.com/downloads/mysql/]
 - SQL : [https://sqlbolt.com]
 - MongoDB : [https://www.mongodb.com/docs]
+
+### A faire
+
+une table image
+un système de favoris en base de données avec une table de liaison entre utilisateurs et annonces
