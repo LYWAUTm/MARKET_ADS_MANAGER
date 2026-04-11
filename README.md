@@ -24,6 +24,8 @@ A partir des besoins, 4 entités ont pu être définis :
 - ANNONCES
 - MESSAGES
 - CATEGORIES
+- ( FAVORIES )
+- ( IMAGE )
 
 ### Les principes de fonctionnement
 
@@ -44,28 +46,18 @@ La conception suit les étapes classiques d'un modèle relationnel :
 
 Le MCD représente les entités principales du projet (Utilisateurs, Annonces, Messages, Catégories) ainsi que leurs relations.
 
-![MCD](./documentations/modeles_conceptuels/drawio/MCD_module_02.png)
-
 ### 2. **MLD** - Modèle Logique de données
 
 Le MLD traduit le MCD en tables relationnelles, avec les clés primaires, clés étrangères et types généraux.
-
-![MLD](./documentations/modeles_conceptuels/drawio/MLD_module_02.png)
 
 ### 3. **MCPD** - Modèle Physique de données
 
 Le MPD correspond à la structure SQL finale : types SQL précis, contraintes, index et relations.
 
-![MPD](./documentations/modeles_conceptuels/drawio/MPD_module_02.png)
-
 ### 4. **Script SQL** - Création de la base de données
 
 Le schéma SQL représente la structure complète de la base de données telle qu’elle est générée par le script SQL :  
 tables, clés primaires, clés étrangères, types SQL, contraintes et index.
-
-![Schéma SQL 1](./documentations/schema_sql/1_schema_sql.png)
-![Schéma SQL 2](./documentations/schema_sql/2_schema_sql.png)
-![Schéma SQL 3](./documentations/schema_sql/3_schema_sql.png)
 
 ## Outils et Ressources
 
@@ -74,7 +66,3 @@ tables, clés primaires, clés étrangères, types SQL, contraintes et index.
 - SQL : [https://sqlbolt.com]
 - MongoDB : [https://www.mongodb.com/docs]
 
-### A faire
-
-une table image
-un système de favoris en base de données avec une table de liaison entre utilisateurs et annonces
