@@ -42,5 +42,3 @@ Astuces : Commencez par identifier les pages et fonctionnalités principales. Ut
 Ressources :
 
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps https://www.figma.com
-
-
