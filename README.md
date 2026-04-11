@@ -1,12 +1,10 @@
- # LeBonCorner
+# MARKET_ADS_MANAGER
 
 Projet pédagogique – Plateforme de petites annonces
 
 **Type** : application inspirée du fonctionnement de Leboncoin
-**Objectif pédagogique** : Le projet est structuré en 12 modules indépendants permettant à l’apprenant d’identifier ses lacunes et de travailler spécifiquement les compétences associées. Chaque module peut être réalisé séparément, puis intégré dans un projet final global.
+**Objectif pédagogique** : Le projet est structuré en 12 modules indépendants permettant le travail d'une compétence spécifique. Chaque module peut être réalisé séparément, puis intégré dans un projet final global.
 **Durée indicative par module** : 1 à 2 jours
-
-
 
 ## Technologies possibles
 
@@ -132,11 +130,10 @@ Astuces : Utilisez services cloud comme Heroku, Render, ou un VPS pour déploiem
 Ressources :
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Deploying
 
---- 
-
 Objectif final pédagogique
 À l’issue des 12 modules, l’apprenant doit :
--	identifier ses lacunes
--	retravailler les modules correspondants
--	assembler les briques techniques
--	produire une application complète de petites annonces Durée projet final : 15 jours.
+
+- identifier ses lacunes
+- retravailler les modules correspondants
+- assembler les briques techniques
+- produire une application complète de petites annonces Durée projet final : 15 jours.
