@@ -13,7 +13,7 @@
 
 - HTML, CSS
 - Bootstrap / Tailwind
-- Nunjucks / EJS
+- React Vite (à confirmer)
 
 ### Backend
 
