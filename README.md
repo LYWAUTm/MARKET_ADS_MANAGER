@@ -1,68 +1,42 @@
-# MODULE 02 - CONCEPTION DE LA BASE DE DONNEES
+# MARKET_ADS_MANAGER
 
-## OBJECTIF DU MODULE
+Projet pédagogique – Plateforme de petites annonces
 
-Concevoir la BDD du projet: **Market Ads Manager**, un site de petites annonces inspiré de « Le Bon Coin ».  
-Ce module s’appuie sur les fonctionnalités définies dans le module 01 pour construire une base relationnelle complète et cohérente.
+**Type** : application inspirée du fonctionnement de Leboncoin
+**Objectif pédagogique** : Le projet est structuré en 12 modules indépendants permettant le travail d'une compétence spécifique. Chaque module peut être réalisé séparément, puis intégré dans un projet final global.
+**Durée indicative par module** : 1 à 2 jours
 
-## Résumé de l'étude des besoins (voir module 01)
+## Technologies possibles
 
-### Les besoins du site
+### Backend
 
-Le site doit permettre :
+- Node.js + Express
+- Node.js + ESM
+- PHP
 
-- la gestion des utilisateurs,
-- la publication et la consultation d’annonces,
-- la classification des annonces par catégories,
-- l’envoi de messages entre utilisateurs.
+### Frontend
 
-### Identification des entités nécessaire à la BDD
+- React
+- Vue
+- Next.js
+- EJS
+- Twig
 
-A partir des besoins, 4 entités ont pu être définis :
+### Base de données
 
-- UTILISATEURS
-- ANNONCES
-- MESSAGES
-- CATEGORIES
-- ( FAVORIES )
-- ( IMAGE )
+- SQL (MySQL / PostgreSQL)
+- MongoDB
 
-### Les principes de fonctionnement
+### UI
 
-A partir des entités on peut déduire les possibilités permisent par le système :
+- Bootstrap
+- Tailwind CSS
+- CSS natif
 
-- Un utilisateur publie plusieurs annonces.  
-- Une annonce appartient à un seul utilisateur.  
-- Une annonce appartient à 0 ou 1 catégorie.  
-- Une catégorie peut contenir plusieurs annonces.  
-- Un utilisateur envoie et reçoit plusieurs messages.  
-- Un message concerne une seule annonce.
+## MODULE 3 – Backend
 
-## Méthodologie
-
-La conception suit les étapes classiques d'un modèle relationnel :
-
-### 1. **MCD** - Modèle Conceptuel de données
-
-Le MCD représente les entités principales du projet (Utilisateurs, Annonces, Messages, Catégories) ainsi que leurs relations.
-
-### 2. **MLD** - Modèle Logique de données
-
-Le MLD traduit le MCD en tables relationnelles, avec les clés primaires, clés étrangères et types généraux.
-
-### 3. **MCPD** - Modèle Physique de données
-
-Le MPD correspond à la structure SQL finale : types SQL précis, contraintes, index et relations.
-
-### 4. **Script SQL** - Création de la base de données
-
-Le schéma SQL représente la structure complète de la base de données telle qu’elle est générée par le script SQL :  
-tables, clés primaires, clés étrangères, types SQL, contraintes et index.
-
-## Outils et Ressources
-
-- Draw.io / diagramms.net : [https://app.diagrams.net]
-- MySQl : [https://dev.mysql.com/downloads/mysql/]
-- SQL : [https://sqlbolt.com]
-- MongoDB : [https://www.mongodb.com/docs]
-
+Objectif pédagogique : Créer un serveur backend fonctionnel capable de recevoir et traiter des requêtes.
+Énoncé : Mettre en place un serveur Node.js ou PHP avec au moins une route API test.
+Livrables : Serveur fonctionnel avec README expliquant le lancement du projet.
+Astuces : Testez votre serveur avec une route simple GET /api/test. Installez Express pour Node.js.
+Ressources : https://nodejs.org/en/docs https://expressjs.com
