@@ -1,116 +1,68 @@
-# MARKET ADS MANAGER
+# MODULE 02 - CONCEPTION DE LA BASE DE DONNEES
 
-## LIVRABLES
+## OBJECTIF DU MODULE
 
-- Liste des fonctionnalités
-- Arborescence du projet
-- wireframes simples
-- liste des routes
+Concevoir la BDD du projet: **Market Ads Manager**, un site de petites annonces inspiré de « Le Bon Coin ».  
+Ce module s’appuie sur les fonctionnalités définies dans le module 01 pour construire une base relationnelle complète et cohérente.
 
-## ARCHITECTURE TECHNIQUE
+## Résumé de l'étude des besoins (voir module 01)
 
-### Backend
+### Les besoins du site
 
-- Node.js + Express
-- MySQL ( local WAMP )
-- Authentification JWT
-- Upload d'images : Multer
-- Sécurité : Helmet, bcrypt
+Le site doit permettre :
 
-### Frontend
+- la gestion des utilisateurs,
+- la publication et la consultation d’annonces,
+- la classification des annonces par catégories,
+- l’envoi de messages entre utilisateurs.
 
-- HTML, CSS, JS
-- Nunjucks ( équivalent EJS )
+### Identification des entités nécessaire à la BDD
 
-## LISTES DES FONCTIONNALITES & ROUTES
+A partir des besoins, 4 entités ont pu être définis :
 
-### Le visiteur (public) doit pouvoir
+- UTILISATEURS
+- ANNONCES
+- MESSAGES
+- CATEGORIES
+- ( FAVORIES )
+- ( IMAGE )
 
-Route accessible sans connexion
+### Les principes de fonctionnement
 
-- Liste des annonces --------------------------------- GET /ads/
-- Détail d’une annonce ------------------------------- GET /ads/:id
-- Contacter vendeur ---------------------------------- POST /ads/:id/contact
+A partir des entités on peut déduire les possibilités permisent par le système :
 
-- Recherche par mot-clé ------------------------------ GET /ads?search=mot
-- Filtre par catégorie ------------------------------- GET /ads?category=cat
-- Filtre par prix (min/max) -------------------------- GET /ads?min=0&max=100
-- Filtre par localisation ---------------------------- GET /ads?location=ville
+- Un utilisateur publie plusieurs annonces.  
+- Une annonce appartient à un seul utilisateur.  
+- Une annonce appartient à 0 ou 1 catégorie.  
+- Une catégorie peut contenir plusieurs annonces.  
+- Un utilisateur envoie et reçoit plusieurs messages.  
+- Un message concerne une seule annonce.
 
-### un utilisateur connecté doit pouvoir
+## Méthodologie
 
-Route accessible après inscription et connexion
+La conception suit les étapes classiques d'un modèle relationnel :
 
-- créer un compte ------------------------------------ POST /auth/register
-- se connecter --------------------------------------- POST /auth/login
+### 1. **MCD** - Modèle Conceptuel de données
 
-- Consulter son profil ------------------------------- GET /user/profile
-- modifier leur profil ------------------------------- PUT /user/profile
-- supprimer leur compte ------------------------------ DELETE /user/profile
+Le MCD représente les entités principales du projet (Utilisateurs, Annonces, Messages, Catégories) ainsi que leurs relations.
 
-- Consulter ses annonces ----------------------------- GET /user/ads
-- Publier une annonce -------------------------------- POST /user/ads
-- Modifier une annonce ------------------------------- PUT /user/ads/:id
-- Supprimer une annonce ------------------------------ DELETE /user/ads/:id
-- contacter le vendeur d’une annonce ----------------- POST /ads/:id/contact
+### 2. **MLD** - Modèle Logique de données
 
-## ARBORESCENCE / WIREFRAMES (pages)
+Le MLD traduit le MCD en tables relationnelles, avec les clés primaires, clés étrangères et types généraux.
 
-- voir dossier images " /public/images/ "
+### 3. **MCPD** - Modèle Physique de données
 
-LIENS :
-FIGMA = [text](https://www.figma.com/design/Axsfwi8eWDzdLisempRRQj/Market-Ads-Manager?node-id=0-1&t=p0WP2MOBMEm2hlye-1)
+Le MPD correspond à la structure SQL finale : types SQL précis, contraintes, index et relations.
 
-## STRUCTURE
+### 4. **Script SQL** - Création de la base de données
 
-MARKET_ADS_MANAGER/
-┣ public/
-┃ ┣ css/
-┃ ┣ documents/
-┃ ┣ images/
-┃ ┃ ┣ arborescence.png
-┃ ┃ ┣ indexe.png
-┃ ┃ ┗ wireframes_page.png
-┃ ┗ js/
-┣ src/
-┃ ┣ config/
-┃ ┃ ┗ db.js
-┃ ┣ controllers/
-┃ ┃ ┣ adsController.js
-┃ ┃ ┣ authController.js
-┃ ┃ ┗ userController.js
-┃ ┣ middlewares/
-┃ ┃ ┣ adsMiddleware.js
-┃ ┃ ┣ authmiddleware.js
-┃ ┃ ┗ userMiddleware.js
-┃ ┣ models/
-┃ ┃ ┣ adsModel.js
-┃ ┃ ┣ authModel.js
-┃ ┃ ┗ userModel.js
-┃ ┣ routes/
-┃ ┃ ┣ adsRoute.js
-┃ ┃ ┣ authRoute.js
-┃ ┃ ┗ userRoute.js
-┃ ┗ server.js
-┣ views/
-┃ ┣ ads/
-┃ ┃ ┣ adsDashboard.njk
-┃ ┃ ┣ detailAds.njk
-┃ ┃ ┣ editAds.njk
-┃ ┃ ┗ listAds.njk
-┃ ┣ contacts/
-┃ ┃ ┣ contactAds.njk
-┃ ┃ ┗ contactUser.njk
-┃ ┣ layouts/
-┃ ┃ ┗ base.njk
-┃ ┣ partials/
-┃ ┃ ┣ footer.njk
-┃ ┃ ┗ header.njk
-┃ ┗ users/
-┃   ┣ editProfil.njk
-┃   ┣ login.njk
-┃   ┣ register.njk
-┃   ┗ userDashboard.njk
-┣ .env
-┣ .gitignore
-┗ README.md
+Le schéma SQL représente la structure complète de la base de données telle qu’elle est générée par le script SQL :  
+tables, clés primaires, clés étrangères, types SQL, contraintes et index.
+
+## Outils et Ressources
+
+- Draw.io / diagramms.net : [https://app.diagrams.net]
+- MySQl : [https://dev.mysql.com/downloads/mysql/]
+- SQL : [https://sqlbolt.com]
+- MongoDB : [https://www.mongodb.com/docs]
+
