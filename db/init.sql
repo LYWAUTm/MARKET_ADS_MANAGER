@@ -1,4 +1,7 @@
-CREATE DATABASE IF NOT EXISTS `market_ads_manager`
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP DATABASE IF EXISTS `market_ads_manager`;
+CREATE DATABASE `market_ads_manager`
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_0900_ai_ci;
 
@@ -84,27 +87,8 @@ CREATE TABLE `favoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
--- Table : messages
+-- Table : messages (désactivée)
 -- --------------------------------------------------------
-DROP TABLE IF EXISTS `messages`;
-CREATE TABLE `messages` (
-  `message_id` INT NOT NULL AUTO_INCREMENT,
-  `content` TEXT NOT NULL,
-  `send_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `user_send_id` INT NOT NULL,
-  `user_receive_id` INT NOT NULL,
-  `ads_id` INT NOT NULL,
-  PRIMARY KEY (`message_id`),
-  KEY `idx_message_user_send` (`user_send_id`),
-  KEY `idx_message_user_receive` (`user_receive_id`),
-  KEY `idx_message_ads` (`ads_id`),
-  CONSTRAINT `fk_message_user_send`
-      FOREIGN KEY (`user_send_id`) REFERENCES `utilisateurs`(`user_id`)
-      ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_message_user_receive`
-      FOREIGN KEY (`user_receive_id`) REFERENCES `utilisateurs`(`user_id`)
-      ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_message_ads`
-      FOREIGN KEY (`ads_id`) REFERENCES `annonces`(`ads_id`)
-      ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- (tout ton bloc messages reste en commentaire)
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -2,14 +2,14 @@ USE market_ads_manager;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
-DELETE FROM messages;
+-- DELETE FROM messages;
 DELETE FROM favoris;
 DELETE FROM images;
 DELETE FROM annonces;
 DELETE FROM categories;
 DELETE FROM utilisateurs;
 
-ALTER TABLE messages AUTO_INCREMENT = 1;
+-- ALTER TABLE messages AUTO_INCREMENT = 1;
 ALTER TABLE images AUTO_INCREMENT = 1;
 ALTER TABLE annonces AUTO_INCREMENT = 1;
 ALTER TABLE categories AUTO_INCREMENT = 1;
@@ -48,11 +48,3 @@ INSERT INTO favoris (user_id, ads_id) VALUES
 (1, 1),
 (1, 3),
 (2, 2);
-
--- messages
-INSERT INTO messages (message_id, content, send_date, user_send_id, user_receive_id, ads_id) VALUES
-(1, 'Bonjour, toujours dispo ?', '2024-03-05 10:00:00', 2, 1, 1),
-(2, 'Oui, toujours disponible', '2024-03-05 10:05:00', 1, 2, 1),
-(3, 'Prix négociable ?', '2024-03-06 09:00:00', 3, 2, 2),
-(4, 'Oui, un peu', '2024-03-06 09:10:00', 2, 3, 2),
-(5, 'Intéressé par la TV', '2024-03-07 14:00:00', 3, 1, 3);
