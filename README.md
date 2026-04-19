@@ -51,12 +51,31 @@ devDependencies
 
 ## MODULE 4 – CRUD des annonces
 
-Objectif pédagogique : Implémenter les opérations Create, Read, Update, Delete pour les annonces.
-Énoncé : Créer les routes : POST /annonces, GET /annonces, GET
+Implémenter les opérations Create, Read, Update, Delete pour les annonces, afin de rendre l’API capable de gérer les données principales du projet.
+
+Créer les routes : POST /annonces, GET /annonces, GET
 /annonces/:id, PUT /annonces/:id, DELETE /annonces/:id.
 Livrables : API CRUD fonctionnelle testée via Postman ou Insomnia.
 Astuces : Tester chaque route avec des données simples avant d’ajouter la base complète.
 Ressources : https://restfulapi.net
+
+### Routes des annonces
+
+ Base de données Mysql
+POST("/ads") Créer une nouvelle annonce
+GET ("/ads) Récupérer toutes les annonces
+GET ("/ads/:id") Récupérer une annonce par son ID
+PUT ("/ads/:id") Modifier une annonce existante
+DELETE ("/ads/:id") Supprimer une annonce
+
+### Routes des messages
+
+Base de données mongoDB
+POST("/messages") Créer un nouveau message
+GET ("/messages") Récupérer tous les messages
+GET ("/messages/post/id-post) Récupérer les messages lié a une annonce
+GET ("/messages/sent/:id_expeditor") Récupérer les messages envoyés par un utilisateur
+GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilisateur
 
 ## START
 
