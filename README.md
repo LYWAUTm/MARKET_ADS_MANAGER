@@ -1,84 +1,106 @@
 # MARKET_ADS_MANAGER
 
-Projet pédagogique – Plateforme de petites annonces
+Projet pédagogique – Plateforme de petites annonces inspirée du fonctionnement de Leboncoin.  
+Le projet est structuré en **12 modules indépendants**, chacun permettant de travailler une compétence spécifique.  
+Chaque module peut être réalisé séparément puis intégré dans un projet final global.
 
-**Type** : application inspirée du fonctionnement de Leboncoin
-**Objectif pédagogique** : Le projet est structuré en 12 modules indépendants permettant le travail d'une compétence spécifique. Chaque module peut être réalisé séparément, puis intégré dans un projet final global.
-**Durée indicative par module** : 1 à 2 jours
+---
 
-## Technologies possibles
+# MODULE 02 – Conception de la base de données
 
-### Backend
+## Objectif du module
+Concevoir la base de données du projet **Market Ads Manager**, en s’appuyant sur les besoins définis dans le module 01.
 
-- Node.js + Express
-- Node.js + ESM
-- PHP
+## Résumé des besoins
+Le site doit permettre :
 
-### Frontend
+- la gestion des utilisateurs  
+- la publication et la consultation d’annonces  
+- la classification des annonces par catégories  
+- l’envoi de messages entre utilisateurs  
 
-- React
-- Vue
-- Next.js
-- EJS
-- Twig
+## Entités identifiées
+- UTILISATEURS  
+- ANNONCES  
+- MESSAGES  
+- CATEGORIES  
+- (FAVORIS)  
+- (IMAGES)  
 
-### Base de données
+## Relations principales
+- Un utilisateur publie plusieurs annonces  
+- Une annonce appartient à un seul utilisateur  
+- Une annonce appartient à 0 ou 1 catégorie  
+- Une catégorie contient plusieurs annonces  
+- Un utilisateur envoie et reçoit plusieurs messages  
+- Un message concerne une seule annonce  
 
-- SQL (MySQL / PostgreSQL)
-- MongoDB
+## 🛠Méthodologie
+1. **MCD** – Modèle Conceptuel  
+2. **MLD** – Modèle Logique  
+3. **MPD** – Modèle Physique  
+4. **Script SQL** – Création de la base  
 
-### UI
+##  Ressources
+- https://app.diagrams.net  
+- https://dev.mysql.com  
+- https://sqlbolt.com  
+- https://www.mongodb.com/docs  
 
-- Bootstrap
-- Tailwind CSS
-- CSS natif
+---
 
-### Dépendances
+# MODULE 04 – CRUD des annonces
 
-dependencies
+## Objectif du module
+Implémenter les opérations **Create, Read, Update, Delete** pour les annonces afin de rendre l’API capable de gérer les données principales du projet.
 
-- cors
-- dotenv
-- express
-- helmet
-- mongoose
-- mysql2
--bcrypt
+##  Routes des annonces (MySQL)
 
-devDependencies
+| Méthode | Route         | Description |
+|---------|---------------|-------------|
+| POST    | /ads          | Créer une nouvelle annonce |
+| GET     | /ads          | Récupérer toutes les annonces |
+| GET     | /ads/:id      | Récupérer une annonce par ID |
+| PUT     | /ads/:id      | Modifier une annonce |
+| DELETE  | /ads/:id      | Supprimer une annonce |
 
+## Routes des messages (MongoDB)
+
+| Méthode | Route | Description |
+|---------|--------|-------------|
+| POST    | /messages | Créer un message |
+| GET     | /messages | Récupérer tous les messages |
+| GET     | /messages/post/:id_post | Messages liés à une annonce |
+| GET     | /messages/sent/:id_expeditor | Messages envoyés |
+| GET     | /messages/received/:id_sender | Messages reçus |
+
+## Tests
+Tester chaque route via **Postman** ou **Insomnia**.  
+Commencer avec des données simples avant d’ajouter la base complète.
+
+## Ressource utile
+https://restfulapi.net
+
+---
+
+# ▶START
+
+- Ouvrir le terminal : `CTRL + ù`  
+- Aller dans le backend : `cd backend`  
+- Lancer le serveur : `npm run dev`  
+
+---
+
+# Dépendances principales
+
+### dependencies
+- cors  
+- dotenv  
+- express  
+- helmet  
+- mongoose  
+- mysql2  
+- bcrypt  
+
+### devDependencies
 - nodemon
-
-## MODULE 4 – CRUD des annonces
-
-Implémenter les opérations Create, Read, Update, Delete pour les annonces, afin de rendre l’API capable de gérer les données principales du projet.
-
-Créer les routes : POST /annonces, GET /annonces, GET
-/annonces/:id, PUT /annonces/:id, DELETE /annonces/:id.
-Livrables : API CRUD fonctionnelle testée via Postman ou Insomnia.
-Astuces : Tester chaque route avec des données simples avant d’ajouter la base complète.
-Ressources : https://restfulapi.net
-
-### Routes des annonces
-
- Base de données Mysql
-POST("/ads") Créer une nouvelle annonce
-GET ("/ads) Récupérer toutes les annonces
-GET ("/ads/:id") Récupérer une annonce par son ID
-PUT ("/ads/:id") Modifier une annonce existante
-DELETE ("/ads/:id") Supprimer une annonce
-
-### Routes des messages
-
-Base de données mongoDB
-POST("/messages") Créer un nouveau message
-GET ("/messages") Récupérer tous les messages
-GET ("/messages/post/id-post) Récupérer les messages lié a une annonce
-GET ("/messages/sent/:id_expeditor") Récupérer les messages envoyés par un utilisateur
-GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilisateur
-
-## START
-
-- ouvrir son terminal "CTRL ù"
-- aller dans son backend "CD backend"
-- lancer son serveur "npm run dev"
