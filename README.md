@@ -43,18 +43,20 @@ dependencies
 - helmet
 - mongoose
 - mysql2
+-bcrypt
 
 devDependencies
 
 - nodemon
 
-## MODULE 3 – Backend
+## MODULE 4 – CRUD des annonces
 
-Objectif pédagogique : Créer un serveur backend fonctionnel capable de recevoir et traiter des requêtes.
-Énoncé : Mettre en place un serveur Node.js ou PHP avec au moins une route API test.
-Livrables : Serveur fonctionnel avec README expliquant le lancement du projet.
-Astuces : Testez votre serveur avec une route simple GET /api/test. Installez Express pour Node.js.
-Ressources : https://nodejs.org/en/docs https://expressjs.com
+Objectif pédagogique : Implémenter les opérations Create, Read, Update, Delete pour les annonces.
+Énoncé : Créer les routes : POST /annonces, GET /annonces, GET
+/annonces/:id, PUT /annonces/:id, DELETE /annonces/:id.
+Livrables : API CRUD fonctionnelle testée via Postman ou Insomnia.
+Astuces : Tester chaque route avec des données simples avant d’ajouter la base complète.
+Ressources : https://restfulapi.net
 
 ## START
 

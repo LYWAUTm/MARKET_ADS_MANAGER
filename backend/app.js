@@ -15,6 +15,8 @@ import ads_routes from "./routes/ads_routes.js";
 import category_routes from "./routes/category_routes.js";
 import message_routes from "./routes/message_routes.js";
 import user_routes from "./routes/user_routes.js";
+import favorites_routes from "./routes/favorites_routes.js";
+
 
 
 // ------------------------ config -----------------------
@@ -40,5 +42,7 @@ app.use("/ads", ads_routes);
 app.use("/categories", category_routes);
 app.use("/messages", message_routes);
 app.use("/users", user_routes);
+app.use("/favorites", favorites_routes);
+
 
 export default app;
