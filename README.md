@@ -82,3 +82,9 @@ GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilis
 - ouvrir son terminal "CTRL ù"
 - aller dans son backend "CD backend"
 - lancer son serveur "npm run dev"
+
+## A FAIRE
+
+- Créer fichier DAO_messages.js
+- Adapter fichier controller_messages.js au fichier         DAO_messages.js
+- Création fichier connect.js dans dossier db pour la connexion a mongoDB.(fichier db_mongo.js actuel bon)

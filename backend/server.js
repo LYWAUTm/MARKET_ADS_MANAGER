@@ -1,6 +1,8 @@
 // ===========================================================
-//                        SERVER.JS
+//                        SERVER.JS (lance le serveur)
 // ===========================================================
+
+// Point d'entrée du backend
 
 import app from "./app.js";
 import { db_Mysql } from "./config/db_mysql.js";
@@ -13,5 +15,5 @@ app.listen(PORT, async () => {
 
     // Connexions BDD
     await db_Mysql();
-    db_Mongo();
+    await db_Mongo();
 });

@@ -10,7 +10,9 @@ import Message from "../models/mongo/messages_model.js";
 export const createMessage = async (req, res) => {
     try {
         const message = await Message.create(req.body);
+
         res.status(201).json(message);
+        
     } catch (error) {
         console.error("Erreur dans message_controller createMessage :", error);
         res.status(500).json({ error: "Erreur serveur" });
@@ -23,7 +25,9 @@ export const createMessage = async (req, res) => {
 export const getMessages = async (req, res) => {
     try {
         const messages = await Message.find().sort({ send_date: -1 });
+
         res.status(200).json(messages);
+        
     } catch (error) {
         console.error("Erreur dans message_controller getMessages :", error);
         res.status(500).json({ error: "Erreur serveur" });

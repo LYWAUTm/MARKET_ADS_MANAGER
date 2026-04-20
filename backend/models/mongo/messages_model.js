@@ -8,7 +8,7 @@ const messageSchema = new mongoose.Schema({
     send_date: { type: Date, default: Date.now }       // 5. date
 });
 
-export default mongoose.model("messages", messageSchema);
+export default mongoose.model("Message", messageSchema);
 
 // expeditor_id : ID utilisateur écrivant le message
 // sender_id    : ID utilisateur recevant le message

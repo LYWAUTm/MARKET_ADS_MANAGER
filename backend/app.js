@@ -1,6 +1,10 @@
 // ===========================================================
-//                          SERVEUR
+//        APP.JS (configure l'application)
 // ===========================================================
+
+// Ne connecte pas à la bas
+// Ne lance pas le serveur
+
 
 // - --------------- Imports ---------------------
 
@@ -10,7 +14,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 
-// Routes
+// Routes importées
 import ads_routes from "./routes/ads_routes.js";
 import category_routes from "./routes/category_routes.js";
 import message_routes from "./routes/message_routes.js";
