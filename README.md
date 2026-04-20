@@ -1,51 +1,22 @@
 # MARKET_ADS_MANAGER
 
-Projet pédagogique – Plateforme de petites annonces
+Projet pédagogique – Plateforme de petites annonces inspirée du fonctionnement de Leboncoin.  
+Le projet est structuré en **12 modules indépendants**, chacun permettant de travailler une compétence spécifique.  
+Chaque module peut être réalisé séparément puis intégré dans un projet final global.
 
-**Type** : application inspirée du fonctionnement de Leboncoin
-**Objectif pédagogique** : Le projet est structuré en 12 modules indépendants permettant le travail d'une compétence spécifique. Chaque module peut être réalisé séparément, puis intégré dans un projet final global.
-**Durée indicative par module** : 1 à 2 jours
+## Dépendances principales
 
-## Technologies possibles
+### dependencies
 
-### Backend
+- cors  
+- dotenv  
+- express  
+- helmet  
+- mongoose  
+- mysql2  
+- bcrypt  
 
-- Node.js + Express
-- Node.js + ESM
-- PHP
-
-### Frontend
-
-- React
-- Vue
-- Next.js
-- EJS
-- Twig
-
-### Base de données
-
-- SQL (MySQL / PostgreSQL)
-- MongoDB
-
-### UI
-
-- Bootstrap
-- Tailwind CSS
-- CSS natif
-
-### Dépendances
-
-dependencies
-
-- cors
-- dotenv
-- express
-- helmet
-- mongoose
-- mysql2
--bcrypt
-
-devDependencies
+### devDependencies
 
 - nodemon
 
@@ -82,9 +53,3 @@ GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilis
 - ouvrir son terminal "CTRL ù"
 - aller dans son backend "CD backend"
 - lancer son serveur "npm run dev"
-
-## A FAIRE
-
-- Créer fichier DAO_messages.js
-- Adapter fichier controller_messages.js au fichier         DAO_messages.js
-- Création fichier connect.js dans dossier db pour la connexion a mongoDB.(fichier db_mongo.js actuel bon)
