@@ -87,3 +87,48 @@ export const getMessagesReceived = async (req, res) => {
         res.status(500).json({ error: "Erreur serveur" });
     }
 };
+
+
+// ------- PUT mettre à jour un message --------
+
+export const updateMessage = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const updated = await Message.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true }
+        );
+
+        if (!updated) {
+            return res.status(404).json({ error: "Message non trouvé" });
+        }
+
+        res.status(200).json(updated);
+
+    } catch (error) {
+        console.error("Erreur dans message_controller updateMessage :", error);
+        res.status(500).json({ error: "Erreur serveur" });
+    }
+};
+
+// ------- DELETE supprimer un message --------
+
+export const deleteMessage = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deleted = await Message.findByIdAndDelete(id);
+
+        if (!deleted) {
+            return res.status(404).json({ error: "Message non trouvé" });
+        }
+
+        res.status(200).json({ message: "Message supprimé avec succès" });
+
+    } catch (error) {
+        console.error("Erreur dans message_controller deleteMessage :", error);
+        res.status(500).json({ error: "Erreur serveur" });
+    }
+};

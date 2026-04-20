@@ -4,7 +4,9 @@ import {
     getMessages,
     getMessagesByPost,
     getMessagesSent,
-    getMessagesReceived
+    getMessagesReceived,
+    updateMessage,
+    deleteMessage
 } from "../controllers/message_controller.js";
 
 const router = express.Router();
@@ -23,5 +25,11 @@ router.get("/sent/:id_expeditor", getMessagesSent);
 
 // GET : récupérer messages reçus par un utilisateur
 router.get("/received/:id_sender", getMessagesReceived);
+
+// PUT : modifier un message d'une annonces
+router.put("/:id", updateMessage);
+
+// DELETE : modifier un message d'une annonces
+router.delete("/:id", deleteMessage);
 
 export default router;
