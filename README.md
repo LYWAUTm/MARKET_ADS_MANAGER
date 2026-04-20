@@ -1,68 +1,55 @@
-# MODULE 02 - CONCEPTION DE LA BASE DE DONNEES
+# MARKET_ADS_MANAGER
 
-## OBJECTIF DU MODULE
+Projet pédagogique – Plateforme de petites annonces inspirée du fonctionnement de Leboncoin.  
+Le projet est structuré en **12 modules indépendants**, chacun permettant de travailler une compétence spécifique.  
+Chaque module peut être réalisé séparément puis intégré dans un projet final global.
 
-Concevoir la BDD du projet: **Market Ads Manager**, un site de petites annonces inspiré de « Le Bon Coin ».  
-Ce module s’appuie sur les fonctionnalités définies dans le module 01 pour construire une base relationnelle complète et cohérente.
+## Dépendances principales
 
-## Résumé de l'étude des besoins (voir module 01)
+### dependencies
 
-### Les besoins du site
+- cors  
+- dotenv  
+- express  
+- helmet  
+- mongoose  
+- mysql2  
+- bcrypt  
 
-Le site doit permettre :
+### devDependencies
 
-- la gestion des utilisateurs,
-- la publication et la consultation d’annonces,
-- la classification des annonces par catégories,
-- l’envoi de messages entre utilisateurs.
+- nodemon
 
-### Identification des entités nécessaire à la BDD
+## MODULE 4 – CRUD des annonces
 
-A partir des besoins, 4 entités ont pu être définis :
+Implémenter les opérations Create, Read, Update, Delete pour les annonces, afin de rendre l’API capable de gérer les données principales du projet.
 
-- UTILISATEURS
-- ANNONCES
-- MESSAGES
-- CATEGORIES
-- ( FAVORIES )
-- ( IMAGE )
+Créer les routes : POST /annonces, GET /annonces, GET
+/annonces/:id, PUT /annonces/:id, DELETE /annonces/:id.
+Livrables : API CRUD fonctionnelle testée via Postman ou Insomnia.
+Astuces : Tester chaque route avec des données simples avant d’ajouter la base complète.
+Ressources : https://restfulapi.net
 
-### Les principes de fonctionnement
+### Routes des annonces
 
-A partir des entités on peut déduire les possibilités permisent par le système :
+ Base de données Mysql
+POST("/ads") Créer une nouvelle annonce
+GET ("/ads) Récupérer toutes les annonces
+GET ("/ads/:id") Récupérer une annonce par son ID
+PUT ("/ads/:id") Modifier une annonce existante
+DELETE ("/ads/:id") Supprimer une annonce
 
-- Un utilisateur publie plusieurs annonces.  
-- Une annonce appartient à un seul utilisateur.  
-- Une annonce appartient à 0 ou 1 catégorie.  
-- Une catégorie peut contenir plusieurs annonces.  
-- Un utilisateur envoie et reçoit plusieurs messages.  
-- Un message concerne une seule annonce.
+### Routes des messages
 
-## Méthodologie
+Base de données mongoDB
+POST("/messages") Créer un nouveau message
+GET ("/messages") Récupérer tous les messages
+GET ("/messages/post/id-post) Récupérer les messages lié a une annonce
+GET ("/messages/sent/:id_expeditor") Récupérer les messages envoyés par un utilisateur
+GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilisateur
 
-La conception suit les étapes classiques d'un modèle relationnel :
+## START
 
-### 1. **MCD** - Modèle Conceptuel de données
-
-Le MCD représente les entités principales du projet (Utilisateurs, Annonces, Messages, Catégories) ainsi que leurs relations.
-
-### 2. **MLD** - Modèle Logique de données
-
-Le MLD traduit le MCD en tables relationnelles, avec les clés primaires, clés étrangères et types généraux.
-
-### 3. **MCPD** - Modèle Physique de données
-
-Le MPD correspond à la structure SQL finale : types SQL précis, contraintes, index et relations.
-
-### 4. **Script SQL** - Création de la base de données
-
-Le schéma SQL représente la structure complète de la base de données telle qu’elle est générée par le script SQL :  
-tables, clés primaires, clés étrangères, types SQL, contraintes et index.
-
-## Outils et Ressources
-
-- Draw.io / diagramms.net : [https://app.diagrams.net]
-- MySQl : [https://dev.mysql.com/downloads/mysql/]
-- SQL : [https://sqlbolt.com]
-- MongoDB : [https://www.mongodb.com/docs]
-
+- ouvrir son terminal "CTRL ù"
+- aller dans son backend "CD backend"
+- lancer son serveur "npm run dev"

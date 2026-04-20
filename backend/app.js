@@ -1,2 +1,45 @@
-// import express from "express";
-// export default router;
+// ===========================================================
+//        APP.JS (configure l'application)
+// ===========================================================
+
+// Ne connecte pas à la bas
+// Ne lance pas le serveur
+
+
+// - --------------- Imports ---------------------
+
+// Dépendances
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import helmet from "helmet";
+
+// Routes importées
+import ads_routes from "./routes/ads_routes.js";
+import category_routes from "./routes/category_routes.js";
+import message_routes from "./routes/message_routes.js";
+import user_routes from "./routes/user_routes.js";
+import favorites_routes from "./routes/favorites_routes.js";
+
+// ------------------------ config -----------------------
+
+dotenv.config();
+
+// création instance app est un objet
+const app = express();
+
+// -------------------- middlewares --------------------------
+
+app.use(express.json());
+app.use(cors());
+app.use(helmet());
+
+// ------------------------ Routes API ------------------------
+
+app.use("/ads", ads_routes);
+app.use("/categories", category_routes);
+app.use("/messages", message_routes);
+app.use("/users", user_routes);
+app.use("/favorites", favorites_routes);
+
+export default app;
