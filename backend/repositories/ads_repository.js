@@ -1,4 +1,4 @@
-const db = require('../config/db.sql');
+import db_mysql from "../config/db_mysql";
 
 const postRepository = {
     findAll,

@@ -1,10 +1,31 @@
+// ===========================================================
+//        INDEX ROUTES (centralise toutes les routes)
+// ===========================================================
 
-// voir pour mettre en place
-/* 
-const app = require("../app");
-const postRoutes = require('./routes/posts.route');
-const conversationRoute = require('../routes/conversation.route')
+// ------------------------ dépendances ---------------------------
 
-app.use('/posts', postRoutes);
-app.use('/conversation', conversationRoute)
-*/
+import express from "express";
+
+
+// --------------------- Imports de Routes --------------------------
+
+import ads_routes from "./ads_routes.js";
+import categories_routes from "./categories_routes.js";
+import messages_routes from "./messages_routes.js";
+import users_routes from "./users_routes.js";
+import favorites_routes from "./favorites_routes.js";
+import conversations_routes from "./conversations_routes.js";
+
+const router = express.Router();
+
+
+// --------------------- Routes API --------------------------
+
+router.use("/ads", ads_routes);
+router.use("/categories", categories_routes);
+router.use("/messages", messages_routes);
+router.use("/users", users_routes);
+router.use("/favorites", favorites_routes);
+router.use("/conversations", conversations_routes);
+
+export default router;

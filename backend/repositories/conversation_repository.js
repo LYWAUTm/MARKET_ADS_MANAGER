@@ -1,4 +1,8 @@
-/*
+// ===========================================================
+//                 CONVERSATIONS REPOSITORIES
+// ===========================================================
+
+// - ----------------------- Imports -------------------------
 
 import conversationModel from "../conversation_model.js"
 
@@ -38,4 +42,3 @@ async function addReaction(conversationId, messageId, reaction){
     {new : true}
 )
 }
-*/ 
