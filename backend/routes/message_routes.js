@@ -11,9 +11,6 @@ import {
 
 const router = express.Router();
 
-// POST : créer un message
-router.post("/", createMessage);
-
 // GET : récupérer tous les messages
 router.get("/", getMessages);
 
@@ -25,6 +22,9 @@ router.get("/sent/:id_expeditor", getMessagesSent);
 
 // GET : récupérer messages reçus par un utilisateur
 router.get("/received/:id_sender", getMessagesReceived);
+
+// POST : créer un message
+router.post("/", createMessage);
 
 // PUT : modifier un message d'une annonces
 router.put("/:id", updateMessage);

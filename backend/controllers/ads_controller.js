@@ -12,9 +12,8 @@ import { pool } from "../config/db_mysql.js";
 // ==============================================================================================
 
 
-// GET (getAds) afficher toutes les annonces
-
-export const getAds = async (req, res) => {
+// GET (getAllAds) afficher toutes les annonces
+export const getAllAds = async (req, res) => {
     try {
         const [rows] = await pool.query(
             "SELECT * FROM ads ORDER BY publication_date DESC"
@@ -29,7 +28,7 @@ export const getAds = async (req, res) => {
         res.status(200).json(rows);
 
     } catch (error) {
-        console.error(error, "Erreur dans ads_controller getAds");
+        console.error(error, "Erreur dans ads_controller getAllAds");
         res.status(500).json({ error: "Erreur serveur" });
     }
 };

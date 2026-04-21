@@ -5,15 +5,15 @@
 
 import express from "express";
 import {
-    getAds,
+    getAllAds,
     getAdById,
     createAd,
     updateAd,
     deleteAd,
-    getAdsByCategory,
-    getAdsByUser,
-    getAdsByKeyword,
-    getAdsByPrice,
+    getAllAdsByCategory,
+    getAllAdsByUser,
+    getAllAdsByKeyword,
+    getAllAdsByPrice,
 } from "../controllers/ads_controller.js";
 
 const router = express.Router();
@@ -22,7 +22,7 @@ const router = express.Router();
 // ------------------------ CRUD ----------------------------
 
 // Récupérer toutes les annonces = URL finale("/ads/")
-router.get("/", getAds);
+router.get("/", getAllAds);
 
 
 // Récupérer une annonce via son id = URL finale("/ads/123")
@@ -45,19 +45,19 @@ router.delete("/:id", deleteAd);
 
 
 // Filtrer par catégorie = URL finale("/ads/category/5")
-router.get("/category/:category_id", getAdsByCategory);
+router.get("/category/:category_id", getAllAdsByCategory);
 
 
 // Filtrer par utilisateur = URL finale("/ads/user/5")
-router.get("/user/:user_id", getAdsByUser);
+router.get("/user/:user_id", getAllAdsByUser);
 
 
 // Filtrer par mot-clé = URL finale("/ads/search/:keyword")
-router.get("/search/:keyword", getAdsByKeyword);
+router.get("/search/:keyword", getAllAdsByKeyword);
 
 
 // Filtrer par prix min/max = URL finale("/ads/price/100/500")
-router.get("/price/:min/:max", getAdsByPrice);
+router.get("/price/:min/:max", getAllAdsByPrice);
 
 
 export default router;
