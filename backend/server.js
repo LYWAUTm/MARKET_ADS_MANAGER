@@ -1,10 +1,12 @@
 // ===========================================================
-//                        SERVER.JS (lance le serveur)
+//               SERVER.JS (lance le serveur)
 // ===========================================================
 
 // Point d'entrée du backend
 
 import app from "./app.js";
+import routes from "./routes/index_route.js";
+
 import { db_Mysql } from "./config/db_mysql.js";
 import { db_Mongo } from "./config/db_mongo.js";
 
