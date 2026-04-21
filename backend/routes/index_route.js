@@ -19,7 +19,7 @@ import conversations_routes from "./conversations_routes.js";
 const router = express.Router();
 
 
-// --------------------- Routes API --------------------------
+// --------------------- Config Routes API --------------------------
 
 router.use("/ads", ads_routes);
 router.use("/categories", categories_routes);

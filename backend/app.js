@@ -1,15 +1,15 @@
 // ===========================================================
-//        APP.JS (configure l'application)
+//             APP.JS (configure l'application)
 // ===========================================================
 
-// - ---------------------- Imports --------------------------
+// - -------------------- Imports --------------------------
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet"
 
 
-// ------------------------ config ---------------------------
+// ---------------------- config ---------------------------
 dotenv.config();
 const app = express();
 

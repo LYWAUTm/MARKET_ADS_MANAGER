@@ -53,3 +53,11 @@ GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilis
 - ouvrir son terminal "CTRL ù"
 - aller dans son backend "CD backend"
 - lancer son serveur "npm run dev"
+
+## FLUX CONVERSATION
+
+Aller :
+Frontend → Routes → Controller → Service → Repository → DAO (Model Schema) → MongoDB
+
+Retour :
+MongoDB → DAO (Model Schema) → Repository → Service → Controller → Routes → Frontend

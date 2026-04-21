@@ -1,6 +1,13 @@
+// =============================================================
+//           D.A.O (Data Acces Object) = accès données
+// =============================================================
+
+// ------------------- imports -------------------
+
 import Conversation from "../models/conversation.model.js";
 
 export default {
+    
     findByAdsId(ads_id) {
         return Conversation.findOne({ ads_id });
     },
@@ -37,3 +44,11 @@ export default {
         );
     }
 };
+
+/* DAO = accès données :
+- Parle à MongoDB
+- Exécute les requêtes
+- Pas de logique métiers
+- Renvoie que des données
+
+*/

@@ -1,5 +1,5 @@
 // =============================================================
-//         CONVERSATION MODEL
+//                  CONVERSATION MODEL = structure des données
 // =============================================================
 
 import mongoose from "mongoose";
@@ -35,11 +35,12 @@ const ConversationSchema = new mongoose.Schema({
 // ------------------- EXPORT -------------------
 export default mongoose.model("Conversation", ConversationSchema);
 
+/* Conversation :
+- nom de la collection créer
+- un objet réutiliser dans les fonctions du DAO 
+- une annonce (ads_id)
+- 2 participants ( [expéditeur, destinataire] )
+- 1 liste de messages imbriqués ( messages[])
+- Les messages peuvent avoir des réactions(réactions[])
 
-// sender_id = expéditeur
-// participants = [expéditeur, destinataire]
-// ads_id = id annonce
-// created_at = date du message
-
-// reaction est imbriqué dans message
-// message est imbriqué dans conversation
+Le modèle Conversation = structure des données.
