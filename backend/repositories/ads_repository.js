@@ -7,14 +7,14 @@ const postRepository = {
 
 // GET all ads
 async function findAll() {
-    const [rows] = await db.execute('SELECT * FROM Post');
+    const [rows] = await db_mysql.execute('SELECT * FROM Post');
     return rows;
 }
 
 // GET by id
 async function findById(id) {
 
-    const [rows] = await db.execute(
+    const [rows] = await db_mysql.execute(
         'SELECT * from Post WHERE id = ? ',
         [id]
     )
@@ -25,14 +25,14 @@ async function findById(id) {
 // version fléché
 /* GET : all posts
 export const findAll = async () => {
-  const [rows] = await db.execute('SELECT * FROM Post');
+  const [rows] = await db_mysql.execute('SELECT * FROM Post');
   return rows;
 }*/
 
 /* GET by id
 export const findById = async () => {
 
-    const [rows] = await db.execute(
+    const [rows] = await db_mysql.execute(
         'SELECT * from Post WHERE id = ? ',
         [id]
     )
