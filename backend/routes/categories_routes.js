@@ -19,9 +19,6 @@ const router = express.Router();
 // Récupérer toutes les catégories = URL finale("/categories/")
 router.get("/", getCategories);
 
-// Récupérer une catégorie via son id = URL finale("/categories/5")
-router.get("/:id", getCategoryById);
-
 // Créer une catégorie = URL finale("/categories/")
 router.post("/", createCategory);
 
@@ -32,4 +29,11 @@ router.put("/:id", updateCategory);
 router.delete("/:id", deleteCategory);
 
 
+// ---------------------- GENERIQUE ---------------------------
+
+// Récupérer une catégorie via son id = URL finale("/categories/5")
+router.get("/:id", getCategoryById);
+
 export default router;
+
+// Générique à la fin pour éviter conflits de positions

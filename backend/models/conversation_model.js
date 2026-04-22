@@ -44,3 +44,4 @@ export default mongoose.model("Conversation", ConversationSchema);
 - Les messages peuvent avoir des réactions(réactions[])
 
 Le modèle Conversation = structure des données.
+*/

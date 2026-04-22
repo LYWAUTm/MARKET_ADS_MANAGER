@@ -11,6 +11,13 @@ import {
 
 const router = express.Router();
 
+// ------------------------ TEST / INFO ----------------------------
+
+// Vérifier que l’API Favorites fonctionne
+router.get("/", (req, res) => {
+    res.json({ message: "Favorites API OK" });
+});
+
 
 // ------------------------ FAVORIS ----------------------------
 
@@ -25,3 +32,6 @@ router.delete("/:user_id/:ads_id", removeFavorite);
 
 
 export default router;
+
+// Pas de UPDATE dans le CRUD car "favorites" = table pivot
+// "favorites" n'a pas de données modifiables (contenu, nom etc..)

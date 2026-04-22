@@ -33,3 +33,8 @@ export const db_Mysql = async () => {
         console.error("Erreur connexion MySQL pool :", error);
     }
 };
+
+// création du pool pour avoir un canal ouvert permanent 
+// possibilités remplacer à chaque ligne du pool MYSQL_HOST par DB_HOST
+// MYSQL_HOST utilisé pour diffrencier de MongoDB
+// db_Mysql réutiliser dans server.js pour tester le démarrage

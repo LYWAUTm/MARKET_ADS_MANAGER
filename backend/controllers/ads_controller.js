@@ -2,40 +2,32 @@
 //                                     ADS  CONTROLLER
 // ==============================================================================================
 
-// Importations
-
 import { pool } from "../config/db_mysql.js";
-
 
 // ==============================================================================================
 //                                          CRUD
 // ==============================================================================================
 
-
-// GET (getAllAds) afficher toutes les annonces
+// GET (getAllAds) afficher toutes les annonces sinon tableau vide
 export const getAllAds = async (req, res) => {
     try {
         const [rows] = await pool.query(
             "SELECT * FROM ads ORDER BY publication_date DESC"
         );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                message: "Aucune annonce trouvée"
-            });
-        }
-
-        res.status(200).json(rows);
+        return res.status(200).json({
+            message: "Liste des annonces récupérée avec succès",
+            data: rows
+        });
 
     } catch (error) {
-        console.error(error, "Erreur dans ads_controller getAllAds");
-        res.status(500).json({ error: "Erreur serveur" });
+        console.error("Erreur dans ads_controller getAllAds", error);
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
 // GET (getAdById) afficher une annonce par ID
-
 export const getAdById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -47,28 +39,32 @@ export const getAdById = async (req, res) => {
 
         if (rows.length === 0) {
             return res.status(404).json({
-                message: "Annonce non trouvée"
+                message: "Annonce non trouvée",
+                data: null
             });
         }
 
-        res.status(200).json(rows[0]);
+        return res.status(200).json({
+            message: "Annonce récupérée avec succès",
+            data: rows[0]
+        });
 
     } catch (error) {
         console.error("Erreur dans ads_controller getAdById", error);
-        res.status(500).json({ message: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
 // POST (createAd) créer une annonce
-
 export const createAd = async (req, res) => {
     try {
         const { title, description, price, location, user_id, category_id } = req.body;
 
         if (!title || !description || !price || !location || !user_id || !category_id) {
             return res.status(400).json({
-                message: "Remplissez tous les champs obligatoire."
+                message: "Remplissez tous les champs obligatoires",
+                data: null
             });
         }
 
@@ -77,24 +73,22 @@ export const createAd = async (req, res) => {
             [title, description, price, location, user_id, category_id]
         );
 
-        res.status(201).json({
+        return res.status(201).json({
             message: "Annonce créée avec succès",
-            ads_id: result.insertId
+            data: { ads_id: result.insertId }
         });
 
     } catch (error) {
         console.error("Erreur dans ads_controller createAd", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
 // PUT (updateAd) modifier une annonce
-
 export const updateAd = async (req, res) => {
     try {
         const { id } = req.params;
-
         const { title, description, price, location, category_id } = req.body;
 
         const [result] = await pool.query(
@@ -103,20 +97,25 @@ export const updateAd = async (req, res) => {
         );
 
         if (result.affectedRows === 0) {
-            return res.status(404).json({ message: "Annonce non trouvée" });
+            return res.status(404).json({
+                message: "Annonce non trouvée",
+                data: null
+            });
         }
 
-        res.status(200).json({ messages: "Annonce mise à jour avec succès" });
+        return res.status(200).json({
+            message: "Annonce mise à jour avec succès",
+            data: { ads_id: id }
+        });
 
     } catch (error) {
         console.error("Erreur dans ads_controller updateAd", error);
-        res.status(500).json({ message: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
-// DELETE (deleteAd) supprimer une annonces
-
+// DELETE (deleteAd) supprimer une annonce
 export const deleteAd = async (req, res) => {
     try {
         const { id } = req.params;
@@ -128,27 +127,29 @@ export const deleteAd = async (req, res) => {
 
         if (result.affectedRows === 0) {
             return res.status(404).json({
-                message: "Annonce non trouvée"
+                message: "Annonce non trouvée",
+                data: null
             });
         }
 
-        res.status(200).json({ message: "Annonce supprimée avec succès" });
+        return res.status(200).json({
+            message: "Annonce supprimée avec succès",
+            data: { ads_id: id }
+        });
 
     } catch (error) {
-        console.error(error, "Erreur dans ads_controller deleteAd");
-        res.status(500).json({ error: "Erreur serveur" });
+        console.error("Erreur dans ads_controller deleteAd", error);
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
-// ==============================================================================================
+// ======================================================================================
 //                                            FILTRES
-// ==============================================================================================
+// ======================================================================================
 
-
-// GET filtrer annonces par catégorie
-
-export const getAdsByCategory = async (req, res) => {
+// GET filtrer par CATEGORY
+export const getAllAdsByCategory = async (req, res) => {
     try {
         const { category_id } = req.params;
 
@@ -157,27 +158,22 @@ export const getAdsByCategory = async (req, res) => {
             [category_id]
         );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                message: "Aucune annonces trouvées pour cette catégorie"
-            });
-        }
-
-        res.status(200).json({
-            message: "Annonces filtrées avec succès",
+        return res.status(200).json({
+            message: rows.length === 0
+                ? "Aucune annonce trouvée pour cette catégorie"
+                : "Annonces filtrées avec succès",
             data: rows
         });
 
     } catch (error) {
         console.error("Erreur dans ads_controller getAdsByCategory", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
-// GET filtrer annonces par utilisateurs
-
-export const getAdsByUser = async (req, res) => {
+// GET filtrer par USER
+export const getAllAdsByUser = async (req, res) => {
     try {
         const { user_id } = req.params;
 
@@ -186,27 +182,22 @@ export const getAdsByUser = async (req, res) => {
             [user_id]
         );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                message: "Aucune annonces trouvées pour cet utilisateur"
-            });
-        }
-
-        res.status(200).json({
-            message: "Annonces filtrées avec succès",
+        return res.status(200).json({
+            message: rows.length === 0
+                ? "Aucune annonce trouvée pour cet utilisateur"
+                : "Annonces filtrées avec succès",
             data: rows
         });
 
     } catch (error) {
         console.error("Erreur dans ads_controller getAdsByUser", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
-// GET filtrer annonces par mot-clé
-
-export const getAdsByKeyword = async (req, res) => {
+// GET filtrer par KEYWORD
+export const getAllAdsByKeyword = async (req, res) => {
     try {
         const { keyword } = req.params;
 
@@ -215,27 +206,22 @@ export const getAdsByKeyword = async (req, res) => {
             [`%${keyword}%`, `%${keyword}%`, `%${keyword}%`]
         );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                message: "Aucune annonces trouvées avec ce mot-clé"
-            });
-        }
-
-        res.status(200).json({
-            message: "Annonces filtrées avec succès",
+        return res.status(200).json({
+            message: rows.length === 0
+                ? "Aucune annonce trouvée avec ce mot-clé"
+                : "Annonces filtrées avec succès",
             data: rows
         });
 
     } catch (error) {
         console.error("Erreur dans ads_controller getAdsByKeyword", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };
 
 
-// GET filtrer annonces par prix min/max
-
-export const getAdsByPrice = async (req, res) => {
+// GET filtrer par PRICE MIN/MAX
+export const getAllAdsByPrice = async (req, res) => {
     try {
         const { min, max } = req.params;
 
@@ -244,19 +230,15 @@ export const getAdsByPrice = async (req, res) => {
             [min, max]
         );
 
-        if (rows.length === 0) {
-            return res.status(404).json({
-                message: "Aucune annonces trouvées dans ces prix"
-            });
-        }
-
-        res.status(200).json({
-            message: "Annonces filtrées avec succès",
+        return res.status(200).json({
+            message: rows.length === 0
+                ? "Aucune annonce trouvée dans cette fourchette de prix"
+                : "Annonces filtrées avec succès",
             data: rows
         });
 
     } catch (error) {
         console.error("Erreur dans ads_controller getAdsByPrice", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        return res.status(500).json({ error: "Erreur serveur" });
     }
 };

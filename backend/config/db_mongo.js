@@ -14,8 +14,10 @@ dotenv.config();
 export const db_Mongo = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        console.log("MongoDB connecté");
+        console.log("MongoDB connecté via mongoose");
     } catch (error) {
         console.error("Erreur de connexion MongoDB :", error);
     }
 };
+
+// Rajouter titre database dans l'URI
