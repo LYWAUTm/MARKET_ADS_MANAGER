@@ -7,7 +7,6 @@
 import express from "express";
 import {
     getAllAds,
-    getAdById,
     createAd,
     updateAd,
     deleteAd,
@@ -15,6 +14,7 @@ import {
     getAllAdsByUser,
     getAllAdsByKeyword,
     getAllAdsByPrice,
+    getAdById,
 } from "../controllers/ads_controller.js";
 
 const router = express.Router();
@@ -22,16 +22,16 @@ const router = express.Router();
 
 // ---------------------- CRUD (NORMALES) ---------------------------
 
-// Récupérer toutes les annonces = URL finale("/ads/")
+// LIRE toutes les annonces = URL finale("/ads/")
 router.get("/", getAllAds);
 
-// Créer une annonce = URL finale("/ads/")
+// CREER une annonce = URL finale("/ads/")
 router.post("/", createAd);
 
-// Modifier une annonce = URL finale("/ads/123")
+// MODIFIER une annonce = URL finale("/ads/123")
 router.put("/:id", updateAd);
 
-// Supprimer une annonce = URL finale("/ads/123")
+// SUPPRIMER une annonce = URL finale("/ads/123")
 router.delete("/:id", deleteAd);
 
 
@@ -52,7 +52,7 @@ router.get("/price/:min/:max", getAllAdsByPrice);
 
 // ------------------------- GENERIQUE --------------------
 
-// Récupérer une annonce via son id = URL finale("/ads/123")
+// LIRE une annonce via son id = URL finale("/ads/123")
 router.get("/:id", getAdById);
 
 export default router;
