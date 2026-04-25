@@ -3,6 +3,7 @@
 // ============================================================================
 
 import express from "express";
+import { authMiddleware } from "../middlewares/auth_middleware.js";
 import {
     getAllConversations,
     getConversationById,
@@ -10,7 +11,8 @@ import {
     getConversationsByAds,
     createConversation,
     addMessageToConversation,
-    addReactionToMessage
+    addReactionToMessage,
+    deleteReactionFromMessage
 } from "../controllers/conversation_controller.js";
 
 const router = express.Router();
@@ -18,31 +20,31 @@ const router = express.Router();
 // ------------------- ROUTES CONVERSATIONS -----------------------------
 
 // Récupérer toutes les conversations
-router.get("/", getAllConversations);
+router.get("/", authMiddleware, getAllConversations);
 
 // Récupérer les conversations d’un utilisateur
-router.get("/user/:userId", getConversationsByUser);
+router.get("/user/:userId", authMiddleware, getConversationsByUser);
 
 // Récupérer les conversations liées à une annonce
-router.get("/ads/:adsId", getConversationsByAds);
+router.get("/ads/:adsId", authMiddleware, getConversationsByAds);
 
 // Créer une nouvelle conversation
-router.post("/", createConversation);
+router.post("/", authMiddleware, createConversation);
 
 // Ajouter un message dans une conversation
-router.post("/:id/messages", addMessageToConversation);
+router.post("/:id/messages", authMiddleware, addMessageToConversation);
 
 // Ajouter une réaction à un message
-router.post("/:id/messages/:messageId/reactions", addReactionToMessage);
+router.post("/:id/messages/:messageId/reactions", authMiddleware, addReactionToMessage);
 
 // Supprimer une réaction d’un message
-router.delete("/:id/messages/:messageId/reactions/:reactionId", deleteReactionFromMessage);
+router.delete("/:id/messages/:messageId/reactions/:reactionId", authMiddleware, deleteReactionFromMessage);
 
 
 // ------------------- ROUTE GENERIQUE ---------------------------------
 
 // Récupérer une conversation par ID
-router.get("/:id", getConversationById);
+router.get("/:id", authMiddleware, getConversationById);
 export default router;
 
 // pas de CRUD car pas une ressource CRUD classique

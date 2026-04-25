@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 
 // ---------------------------- GET (getUsers) tous les utilisateurs ----------------------------
 
-export const getUsers = async (req, res) => {
+export const getUsers = async (req, res, next) => {
     try {
         const [rows] = await pool.query("SELECT * FROM users ORDER BY creation_date DESC");
 
@@ -19,15 +19,14 @@ export const getUsers = async (req, res) => {
         res.status(200).json(rows);
 
     } catch (error) {
-        console.error("Erreur dans users_controller getUsers :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
-// ---------------------------- GET utilisateur par ID ----------------------------
+// ---------------------------- GET (getUserById) utilisateur par ID ----------------------------
 
-export const getUserById = async (req, res) => {
+export const getUserById = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -43,15 +42,14 @@ export const getUserById = async (req, res) => {
         res.status(200).json(rows[0]);
 
     } catch (error) {
-        console.error("Erreur dans users_controller getUserById :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
-// ---------------------------- POST créer un utilisateur ----------------------------
+// ---------------------------- POST (createUser) créer un utilisateur ----------------------------
 
-export const createUser = async (req, res) => {
+export const createUser = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
 
@@ -59,7 +57,7 @@ export const createUser = async (req, res) => {
             return res.status(400).json({ message: "Tous les champs sont obligatoires" });
         }
 
-        // Vérifier email unique
+        // Vérif si email unique
         const [existing] = await pool.query(
             "SELECT * FROM users WHERE email = ?",
             [email]
@@ -83,15 +81,14 @@ export const createUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans users_controller createUser :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- PUT modifier un utilisateur ----------------------------
 
-export const updateUser = async (req, res) => {
+export const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { name, email } = req.body;
@@ -108,15 +105,14 @@ export const updateUser = async (req, res) => {
         res.status(200).json({ message: "Utilisateur mis à jour avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans users_controller updateUser :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- DELETE supprimer un utilisateur ----------------------------
 
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -132,7 +128,6 @@ export const deleteUser = async (req, res) => {
         res.status(200).json({ message: "Utilisateur supprimé avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans users_controller deleteUser :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };

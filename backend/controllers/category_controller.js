@@ -7,7 +7,7 @@ import { pool } from "../config/db_mysql.js";
 
 // ---------------------------- GET toutes les catégories ----------------------------
 
-export const getCategories = async (req, res) => {
+export const getCategories = async (req, res, next) => {
     try {
         const [rows] = await pool.query("SELECT * FROM categories ORDER BY category_id ASC");
 
@@ -18,15 +18,14 @@ export const getCategories = async (req, res) => {
         res.status(200).json(rows);
 
     } catch (error) {
-        console.error("Erreur dans category_controller getCategories :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- GET catégorie par ID ----------------------------
 
-export const getCategoryById = async (req, res) => {
+export const getCategoryById = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -42,15 +41,14 @@ export const getCategoryById = async (req, res) => {
         res.status(200).json(rows[0]);
 
     } catch (error) {
-        console.error("Erreur dans category_controller getCategoryById :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- POST créer une catégorie ----------------------------
 
-export const createCategory = async (req, res) => {
+export const createCategory = async (req, res, next) => {
     try {
         const { title } = req.body;
 
@@ -69,15 +67,14 @@ export const createCategory = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans category_controller createCategory :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- PUT modifier une catégorie ----------------------------
 
-export const updateCategory = async (req, res) => {
+export const updateCategory = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { title } = req.body;
@@ -94,15 +91,14 @@ export const updateCategory = async (req, res) => {
         res.status(200).json({ message: "Catégorie mise à jour avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans category_controller updateCategory :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- DELETE supprimer une catégorie ----------------------------
 
-export const deleteCategory = async (req, res) => {
+export const deleteCategory = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -118,7 +114,6 @@ export const deleteCategory = async (req, res) => {
         res.status(200).json({ message: "Catégorie supprimée avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans category_controller deleteCategory :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };

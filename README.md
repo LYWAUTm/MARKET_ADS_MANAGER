@@ -1,63 +1,94 @@
-# MARKET_ADS_MANAGER
+# MODULE 05 — Authentification utilisateur
 
-Projet pédagogique – Plateforme de petites annonces inspirée du fonctionnement de Leboncoin.  
-Le projet est structuré en **12 modules indépendants**, chacun permettant de travailler une compétence spécifique.  
-Chaque module peut être réalisé séparément puis intégré dans un projet final global.
+Plateforme : **MARKET_ADS_MANAGER**
 
-## Dépendances principales
+Objectif : Permettre aux utilisateurs de :
 
-### dependencies
+- **s’inscrire**
 
-- cors  
-- dotenv  
-- express  
-- helmet  
-- mongoose  
-- mysql2  
-- bcrypt  
+- **se connecter**
 
-### devDependencies
+- **accéder aux routes protégées** via un système sécurisé basé sur **bcrypt** et **JWT**.
 
-- nodemon
+## Objectifs pédagogiques
 
-## MODULE 4 – CRUD des annonces
+- Implémenter un système d’authentification sécurisé.
+- Gérer l’inscription (REGISTER) et la connexion (LOGIN).
+- Protéger les routes sensibles via un middleware JWT.
+- Centraliser la gestion des erreurs via un middleware global.
+- Tester l’ensemble avec Postman.
 
-Implémenter les opérations Create, Read, Update, Delete pour les annonces, afin de rendre l’API capable de gérer les données principales du projet.
+---
 
-Créer les routes : POST /annonces, GET /annonces, GET
-/annonces/:id, PUT /annonces/:id, DELETE /annonces/:id.
-Livrables : API CRUD fonctionnelle testée via Postman ou Insomnia.
-Astuces : Tester chaque route avec des données simples avant d’ajouter la base complète.
-Ressources : https://restfulapi.net
+## Technologies utilisées
 
-### Routes des annonces
+### Dépendances
 
- Base de données Mysql
-POST("/ads") Créer une nouvelle annonce
-GET ("/ads) Récupérer toutes les annonces
-GET ("/ads/:id") Récupérer une annonce par son ID
-PUT ("/ads/:id") Modifier une annonce existante
-DELETE ("/ads/:id") Supprimer une annonce
+- **bcrypt** — Hash sécurisé des mots de passe  
+- **jsonwebtoken** — Génération et vérification des tokens JWT  
+- **express** — Framework backend  
+- **mysql2** — Base de données utilisateurs  
+- **helmet** — Sécurisation des headers HTTP  
+- **cors** — Autorisation des requêtes cross-origin  
+- **dotenv** — Variables d’environnement  
 
-### Routes des messages
+### Dev
 
-Base de données mongoDB
-POST("/messages") Créer un nouveau message
-GET ("/messages") Récupérer tous les messages
-GET ("/messages/post/id-post) Récupérer les messages lié a une annonce
-GET ("/messages/sent/:id_expeditor") Récupérer les messages envoyés par un utilisateur
-GET ("/messages/received/id_sender) Récupérer les messages reçu par un utilisateur
+- **nodemon** — Reload automatique en développement
 
-## START
+## Architecture liée à l’authentification
 
-- ouvrir son terminal "CTRL ù"
-- aller dans son backend "CD backend"
-- lancer son serveur "npm run dev"
+backend/
+│
+├── controllers/
+│   └── auth_controller.js
+│
+├── middlewares/
+│   ├── auth_middleware.js
+│   └── error_middleware.js
+│
+├── routes/
+│   └── auth_routes.js
+│
+├── config/
+│   └── db_mysql.js
+│
+├── app.js
+└── server.js
 
-## FLUX CONVERSATION
+## Fonctionnalités implémentées
 
-Aller :
-Frontend → Routes → Controller → Service → Repository → DAO (Model Schema) → MongoDB
+### 1. REGISTER
 
-Retour :
-MongoDB → DAO (Model Schema) → Repository → Service → Controller → Routes → Frontend
+#### Rôle
+
+- Vérifier si l’email existe déjà  
+- Hash le mot de passe avec **bcrypt**  
+- Insère l’utilisateur dans MySQL  
+- Retourne un message + l’ID créé
+
+### 2. LOGIN
+
+#### Rôle
+
+- Vérifier existence utilisateur
+- Comparé mot de passe hashé
+- Générer un token
+- Retourner infos utilisateur + token
+
+### 3. AUTH_MIDDLEWARE
+
+#### Rôle
+
+- Vérifier présence header Authorization: Bearer TOKEN
+- Vérifier validité du TOKEN
+- Extrait ID utilisateur
+- Blocage accès si TOKEN manquant ou invalise
+
+### 4. ERROR_MIDDLEWARE
+
+#### Rôle
+
+- Centraliser toutes les erreurs
+- Formater les réponses JSON
+- Stack afficher seulement en NODE_ENV=development

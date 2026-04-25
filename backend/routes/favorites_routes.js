@@ -3,6 +3,7 @@
 // ==========================================================
 
 import express from "express";
+import { authMiddleware } from "../middlewares/auth_middleware.js";
 import {
     getFavoritesByUser,
     addFavorite,
@@ -22,13 +23,13 @@ router.get("/", (req, res) => {
 // ------------------------ FAVORIS ----------------------------
 
 // Récupérer les favoris d’un utilisateur = URL finale("/favorites/5")
-router.get("/:user_id", getFavoritesByUser);
+router.get("/:user_id", authMiddleware, getFavoritesByUser);
 
 // Ajouter un favori = URL finale("/favorites/")
-router.post("/", addFavorite);
+router.post("/", authMiddleware, addFavorite);
 
 // Retirer un favori = URL finale("/favorites/5/12")
-router.delete("/:user_id/:ads_id", removeFavorite);
+router.delete("/:user_id/:ads_id", authMiddleware, removeFavorite);
 
 
 export default router;

@@ -3,6 +3,7 @@
 // ==========================================================
 
 import express from "express";
+import { authMiddleware } from "../middlewares/auth_middleware.js";
 import {
     getCategories,
     getCategoryById,
@@ -20,13 +21,13 @@ const router = express.Router();
 router.get("/", getCategories);
 
 // Créer une catégorie = URL finale("/categories/")
-router.post("/", createCategory);
+router.post("/", authMiddleware, createCategory);
 
 // Modifier une catégorie = URL finale("/categories/5")
-router.put("/:id", updateCategory);
+router.put("/:id", authMiddleware, updateCategory);
 
 // Supprimer une catégorie = URL finale("/categories/5")
-router.delete("/:id", deleteCategory);
+router.delete("/:id", authMiddleware, deleteCategory);
 
 
 // ---------------------- GENERIQUE ---------------------------

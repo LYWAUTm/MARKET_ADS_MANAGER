@@ -7,7 +7,7 @@ import { pool } from "../config/db_mysql.js";
 
 // ---------------------------- GET favoris d’un utilisateur ----------------------------
 
-export const getFavoritesByUser = async (req, res) => {
+export const getFavoritesByUser = async (req, res, next) => {
     try {
         const { user_id } = req.params;
 
@@ -23,15 +23,14 @@ export const getFavoritesByUser = async (req, res) => {
         res.status(200).json(rows);
 
     } catch (error) {
-        console.error("Erreur dans favorites_controller getFavoritesByUser :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- POST ajouter un favori ----------------------------
 
-export const addFavorite = async (req, res) => {
+export const addFavorite = async (req, res, next) => {
     try {
         const { user_id, ads_id } = req.body;
 
@@ -57,15 +56,14 @@ export const addFavorite = async (req, res) => {
         res.status(201).json({ message: "Favori ajouté avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans favorites_controller addFavorite :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------------- DELETE retirer un favori ----------------------------
 
-export const removeFavorite = async (req, res) => {
+export const removeFavorite = async (req, res, next) => {
     try {
         const { user_id, ads_id } = req.params;
 
@@ -81,7 +79,6 @@ export const removeFavorite = async (req, res) => {
         res.status(200).json({ message: "Favori retiré avec succès" });
 
     } catch (error) {
-        console.error("Erreur dans favorites_controller removeFavorite :", error);
-        res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };

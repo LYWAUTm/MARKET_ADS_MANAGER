@@ -9,7 +9,7 @@ import { pool } from "../config/db_mysql.js";
 // ==============================================================================================
 
 // GET (getAllAds) afficher toutes les annonces sinon tableau vide
-export const getAllAds = async (req, res) => {
+export const getAllAds = async (req, res, next) => {
     try {
         const [rows] = await pool.query(
             "SELECT * FROM ads ORDER BY publication_date DESC"
@@ -21,14 +21,13 @@ export const getAllAds = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAllAds", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // GET (getAdById) afficher une annonce par ID
-export const getAdById = async (req, res) => {
+export const getAdById = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -50,14 +49,13 @@ export const getAdById = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAdById", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // POST (createAd) créer une annonce
-export const createAd = async (req, res) => {
+export const createAd = async (req, res, next) => {
     try {
         const { title, description, price, location, user_id, category_id } = req.body;
 
@@ -79,14 +77,13 @@ export const createAd = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller createAd", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // PUT (updateAd) modifier une annonce
-export const updateAd = async (req, res) => {
+export const updateAd = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { title, description, price, location, category_id } = req.body;
@@ -109,14 +106,13 @@ export const updateAd = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller updateAd", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // DELETE (deleteAd) supprimer une annonce
-export const deleteAd = async (req, res) => {
+export const deleteAd = async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -138,18 +134,17 @@ export const deleteAd = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller deleteAd", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ======================================================================================
-//                                            FILTRES
+//                                FILTRES
 // ======================================================================================
 
 // GET filtrer par CATEGORY
-export const getAllAdsByCategory = async (req, res) => {
+export const getAllAdsByCategory = async (req, res, next) => {
     try {
         const { category_id } = req.params;
 
@@ -166,14 +161,13 @@ export const getAllAdsByCategory = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAdsByCategory", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // GET filtrer par USER
-export const getAllAdsByUser = async (req, res) => {
+export const getAllAdsByUser = async (req, res, next) => {
     try {
         const { user_id } = req.params;
 
@@ -190,14 +184,13 @@ export const getAllAdsByUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAdsByUser", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // GET filtrer par KEYWORD
-export const getAllAdsByKeyword = async (req, res) => {
+export const getAllAdsByKeyword = async (req, res, next) => {
     try {
         const { keyword } = req.params;
 
@@ -214,14 +207,13 @@ export const getAllAdsByKeyword = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAdsByKeyword", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // GET filtrer par PRICE MIN/MAX
-export const getAllAdsByPrice = async (req, res) => {
+export const getAllAdsByPrice = async (req, res, next) => {
     try {
         const { min, max } = req.params;
 
@@ -238,7 +230,6 @@ export const getAllAdsByPrice = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur dans ads_controller getAdsByPrice", error);
-        return res.status(500).json({ error: "Erreur serveur" });
+        next(error);
     }
 };

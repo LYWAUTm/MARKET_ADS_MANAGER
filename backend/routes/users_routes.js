@@ -3,6 +3,7 @@
 // ==========================================================
 
 import express from "express";
+import { authMiddleware } from "../middlewares/auth_middleware.js";
 import {
     getUsers,
     getUserById,
@@ -17,19 +18,19 @@ const router = express.Router();
 // ------------------------ CRUD ----------------------------
 
 // Récupérer tous les utilisateurs = URL finale("/users/")
-router.get("/", getUsers);
+router.get("/", authMiddleware, getUsers);
 
 // Récupérer un utilisateur via son id = URL finale("/users/123")
-router.get("/:id", getUserById);
+router.get("/:id", authMiddleware, getUserById);
 
 // Créer un utilisateur = URL finale("/users/")
-router.post("/", createUser);
+router.post("/", authMiddleware, createUser);
 
 // Modifier un utilisateur = URL finale("/users/123")
-router.put("/:id", updateUser);
+router.put("/:id", authMiddleware, updateUser);
 
 // Supprimer un utilisateur = URL finale("/users/123")
-router.delete("/:id", deleteUser);
+router.delete("/:id", authMiddleware, deleteUser);
 
 
 export default router;

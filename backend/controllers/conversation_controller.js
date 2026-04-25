@@ -15,7 +15,7 @@ import {
 
 // ---------------------- GET ALL ----------------------
 
-export const getAllConversations = async (req, res) => {
+export const getAllConversations = async (req, res, next) => {
     try {
         const conversations = await getAll();
 
@@ -25,15 +25,14 @@ export const getAllConversations = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur getAllConversations:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- GET BY ID ----------------------
 
-export const getConversationById = async (req, res) => {
+export const getConversationById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const conversation = await getById(id);
@@ -51,15 +50,14 @@ export const getConversationById = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur getConversationById:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- GET BY USER ----------------------
 
-export const getConversationsByUser = async (req, res) => {
+export const getConversationsByUser = async (req, res, next) => {
     try {
         const { userId } = req.params;
         const conversations = await getByUser(userId);
@@ -72,14 +70,13 @@ export const getConversationsByUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur getConversationsByUser:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- GET BY ADS ----------------------
-export const getConversationsByAds = async (req, res) => {
+export const getConversationsByAds = async (req, res, next) => {
     try {
         const { adsId } = req.params;
         const conversations = await getByAds(adsId);
@@ -92,15 +89,14 @@ export const getConversationsByAds = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur getConversationsByAds:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- CREATE CONVERSATION ----------------------
 
-export const createConversation = async (req, res) => {
+export const createConversation = async (req, res, next) => {
     try {
         const data = req.body;
         const newConversation = await create(data);
@@ -111,15 +107,14 @@ export const createConversation = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur createConversation:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- ADD MESSAGE ----------------------
 
-export const addMessageToConversation = async (req, res) => {
+export const addMessageToConversation = async (req, res, next) => {
     try {
         const { id } = req.params;
         const message = req.body;
@@ -132,15 +127,14 @@ export const addMessageToConversation = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur addMessageToConversation:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- ADD REACTION ----------------------
 
-export const addReactionToMessage = async (req, res) => {
+export const addReactionToMessage = async (req, res, next) => {
     try {
         const { id, messageId } = req.params;
         const reaction = req.body;
@@ -153,15 +147,14 @@ export const addReactionToMessage = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur addReactionToMessage:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
 
 // ---------------------- DELETE REACTION ----------------------
 
-export const deleteReactionFromMessage = async (req, res) => {
+export const deleteReactionFromMessage = async (req, res, next) => {
     try {
         const { id, messageId, reactionId } = req.params;
 
@@ -173,8 +166,7 @@ export const deleteReactionFromMessage = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Erreur deleteReaction:", error);
-        return res.status(500).json({ message: "Erreur serveur" });
+        next(error);
     }
 };
 
